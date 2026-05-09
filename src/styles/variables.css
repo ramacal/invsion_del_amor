@@ -1,0 +1,110 @@
+/* ===========================
+   INVASIÓN DEL AMOR - CSS Variables
+   =========================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+
+:root {
+  /* Brand Colors */
+  --color-gold:         #C8862A;
+  --color-gold-light:   #E5A84E;
+  --color-gold-dark:    #96621E;
+  --color-cream:        #FDF8F0;
+  --color-white:        #FFFFFF;
+
+  /* Dark palette */
+  --color-dark:         #0D0D0D;
+  --color-dark-2:       #151515;
+  --color-dark-3:       #1E1E1E;
+  --color-dark-4:       #2A2A2A;
+
+  /* Grays */
+  --color-gray-1:       #F5F5F5;
+  --color-gray-2:       #E0E0E0;
+  --color-gray-3:       #9E9E9E;
+  --color-gray-4:       #616161;
+  --text-muted:         rgba(255, 255, 255, 0.6);
+
+  /* Accent */
+  --color-accent:       #FFD580;
+  --color-whatsapp:     #25D366;
+  --color-instagram:    #E1306C;
+
+  /* Gradients */
+  --gradient-gold:      linear-gradient(135deg, #C8862A 0%, #E5A84E 50%, #C8862A 100%);
+  --gradient-dark:      linear-gradient(180deg, #0D0D0D 0%, #1a1207 100%);
+  --gradient-hero:      linear-gradient(135deg, #0D0D0D 0%, #1c140a 60%, #2a1d0d 100%);
+  --gradient-card:      linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(200,134,42,0.08) 100%);
+
+  /* Typography */
+  --font-primary:   'Outfit', sans-serif;
+  --font-display:   'Playfair Display', serif;
+
+  --fs-xs:    0.75rem;
+  --fs-sm:    0.875rem;
+  --fs-base:  1rem;
+  --fs-lg:    1.125rem;
+  --fs-xl:    1.25rem;
+  --fs-2xl:   1.5rem;
+  --fs-3xl:   1.875rem;
+  --fs-4xl:   2.25rem;
+  --fs-5xl:   3rem;
+  --fs-6xl:   3.75rem;
+  --fs-7xl:   4.5rem;
+
+  --fw-light:   300;
+  --fw-regular: 400;
+  --fw-medium:  500;
+  --fw-semibold:600;
+  --fw-bold:    700;
+  --fw-extrabold:800;
+
+  /* Spacing */
+  --space-1:  0.25rem;
+  --space-2:  0.5rem;
+  --space-3:  0.75rem;
+  --space-4:  1rem;
+  --space-5:  1.25rem;
+  --space-6:  1.5rem;
+  --space-8:  2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+
+  /* Border Radius */
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   16px;
+  --radius-xl:   24px;
+  --radius-2xl:  32px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm:   0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  --shadow-md:   0 4px 6px rgba(0,0,0,0.07), 0 10px 15px rgba(0,0,0,0.1);
+  --shadow-lg:   0 10px 25px rgba(0,0,0,0.15), 0 20px 48px rgba(0,0,0,0.2);
+  --shadow-xl:   0 25px 50px rgba(0,0,0,0.25);
+  --shadow-gold: 0 0 30px rgba(200,134,42,0.3), 0 0 60px rgba(200,134,42,0.1);
+  --shadow-glow: 0 0 15px rgba(200,134,42,0.5);
+
+  /* Transitions */
+  --transition-fast:   150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base:   300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow:   500ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Glassmorphism */
+  --glass-bg:          rgba(255, 255, 255, 0.05);
+  --glass-border:      rgba(255, 255, 255, 0.1);
+  --glass-bg-gold:     rgba(200, 134, 42, 0.1);
+  --glass-border-gold: rgba(200, 134, 42, 0.25);
+
+  /* Layout */
+  --container-max:    1200px;
+  --container-pad:    clamp(1rem, 5vw, 2rem);
+  --nav-height:       80px;
+  --section-padding:  clamp(4rem, 8vw, 8rem);
+}

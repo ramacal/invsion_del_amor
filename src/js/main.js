@@ -1,0 +1,89 @@
+/* ===========================
+   INVASIÓN DEL AMOR — main.js
+   T006 + T021: Interacciones y animaciones
+   =========================== */
+
+(function () {
+  'use strict';
+
+  /* ── Navbar scroll effect ── */
+  const navbar = document.getElementById('navbar');
+  const onScroll = () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* ── Mobile hamburger menu ── */
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('nav-links');
+
+  hamburger.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', String(isOpen));
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+
+  // Close menu when a link is clicked
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    });
+  });
+
+  /* ── Scroll Reveal (Intersection Observer) ── */
+  const revealSelectors = '.reveal, .reveal-left, .reveal-right';
+  const revealEls = document.querySelectorAll(revealSelectors);
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+    );
+    revealEls.forEach(el => observer.observe(el));
+  } else {
+    // Fallback for older browsers
+    revealEls.forEach(el => el.classList.add('visible'));
+  }
+
+  /* ── Active nav link highlight on scroll ── */
+  const sections = document.querySelectorAll('section[id]');
+  const navAnchors = document.querySelectorAll('.navbar__links a');
+
+  const highlightNav = () => {
+    let current = '';
+    sections.forEach(sec => {
+      const top = sec.offsetTop - 100;
+      if (window.scrollY >= top) current = sec.id;
+    });
+    navAnchors.forEach(a => {
+      a.style.color = a.getAttribute('href') === `#${current}`
+        ? 'var(--color-gold-light)'
+        : '';
+    });
+  };
+  window.addEventListener('scroll', highlightNav, { passive: true });
+
+  /* ── Smooth WhatsApp float appearance ── */
+  const waFloat = document.getElementById('wa-float');
+  if (waFloat) {
+    waFloat.style.opacity = '0';
+    waFloat.style.transform = 'scale(0.5)';
+    waFloat.style.transition = 'opacity 0.4s ease, transform 0.4s cubic-bezier(0.34,1.56,0.64,1)';
+    setTimeout(() => {
+      waFloat.style.opacity = '1';
+      waFloat.style.transform = 'scale(1)';
+    }, 1200);
+  }
+})();
