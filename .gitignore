@@ -16,3 +16,9 @@ Thumbs.db
 
 # Google Drive Junctions / Docs
 docs/
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+!.env.example
