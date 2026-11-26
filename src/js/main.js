@@ -6,6 +6,37 @@
 (function () {
   'use strict';
 
+  /* ── Datos de contacto: editar SOLO acá ──
+     whatsapp: número en formato internacional, solo dígitos
+     (ej. Argentina celular: 549 + área sin 0 + número sin 15 → '5491123456789').
+     Mientras esté vacío, los botones de WhatsApp quedan ocultos. */
+  const CONTACT = {
+    whatsapp: '',
+    whatsappMessage: 'Hola! Quiero saber más sobre Invasión del Amor.'
+  };
+
+  /* ── WhatsApp links ── */
+  const waNumber = CONTACT.whatsapp.replace(/\D/g, '');
+  document.querySelectorAll('[data-wa]').forEach(el => {
+    if (!waNumber) {
+      // Sin número: el link de contacto queda como texto, sin abrir otra pestaña
+      el.removeAttribute('target');
+      return;
+    }
+    el.href = `https://wa.me/${waNumber}?text=${encodeURIComponent(CONTACT.whatsappMessage)}`;
+    el.hidden = false;
+    if (el.hasAttribute('data-wa-show-number')) el.textContent = `+${waNumber}`;
+  });
+
+  /* ── Hero video: no cargar con "reducir movimiento" o ahorro de datos ── */
+  const heroVideo = document.getElementById('hero-video');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const saveData = navigator.connection && navigator.connection.saveData;
+  if (heroVideo && !reduceMotion && !saveData) {
+    heroVideo.src = heroVideo.dataset.src;
+    heroVideo.play().catch(() => { /* autoplay bloqueado: queda el poster */ });
+  }
+
   /* ── Navbar scroll effect ── */
   const navbar = document.getElementById('navbar');
   const onScroll = () => {
@@ -68,9 +99,10 @@
       if (window.scrollY >= top) current = sec.id;
     });
     navAnchors.forEach(a => {
-      a.style.color = a.getAttribute('href') === `#${current}`
-        ? 'var(--color-gold-light)'
-        : '';
+      const active = a.getAttribute('href') === `#${current}`;
+      a.classList.toggle('active', active);
+      if (active) a.setAttribute('aria-current', 'location');
+      else a.removeAttribute('aria-current');
     });
   };
   window.addEventListener('scroll', highlightNav, { passive: true });
