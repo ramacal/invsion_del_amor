@@ -22,3 +22,9 @@ docs/
 .dev.vars*
 !.dev.vars.example
 !.env.example
+# Windows
+desktop.ini
+
+# Fuentes para regenerar el logo
+tools/logo/fonts/
+node_modules/

@@ -1,7 +1,7 @@
-# Implementation Plan: [FEATURE]
+# Implementation Plan: Sitio Web Institucional
 
-**Branch**: `[###-feature-name]` | **Date**: [DATE] | **Spec**: [link]
-**Input**: Feature specification from `/specs/[###-feature-name]/spec.md`
+**Branch**: `001-sitio-web-institucional` | **Date**: 2026-05-09 | **Spec**: [spec.md](spec.md)
+**Input**: Feature specification from `/specs/001-sitio-web-institucional/spec.md`
 
 **Note**: This template is filled in by the `/speckit-plan` command. See `.specify/templates/plan-template.md` for the execution workflow.
 
@@ -40,7 +40,7 @@ Desarrollar un sitio web institucional estático para "Invasión del Amor de Dio
 ### Documentation (this feature)
 
 ```text
-specs/[###-feature]/
+specs/001-sitio-web-institucional/
 ├── plan.md              # This file (/speckit-plan command output)
 ├── research.md          # Phase 0 output (/speckit-plan command)
 ├── data-model.md        # Phase 1 output (/speckit-plan command)
@@ -61,8 +61,9 @@ src/
 ├── js/
 │   └── main.js
 └── assets/
-    ├── img/
-    └── logos/
+    ├── img/        (fotos del equipo en WebP, 400px)
+    ├── logos/      (logo.svg = logo principal (vectorizado), favicon, og-image, QR)
+    └── videos/     (video del hero + poster.webp)
 ```
 
 **Structure Decision**: Se utilizará una estructura de aplicación web estática pura (Option 1 simplificada), separando estilos en componentes lógicos y usando un archivo JavaScript principal para las interacciones (animaciones, scroll, etc.).

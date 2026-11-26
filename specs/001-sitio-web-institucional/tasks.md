@@ -25,11 +25,11 @@ description: "Task list for Sitio Web Institucional"
 
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete
 
-- [ ] T003 Create base HTML5 skeleton with SEO tags in `src/index.html`
-- [ ] T004 [P] Setup CSS variables (colores, tipografía, efectos modernos) en `src/styles/variables.css`
-- [ ] T005 [P] Setup base CSS (reset, body defaults) en `src/styles/base.css`
-- [ ] T006 Create main JS entry point en `src/js/main.js` e importarlo en `src/index.html`
-- [ ] T007 Importar variables y base CSS en `src/index.html`
+- [x] T003 Create base HTML5 skeleton with SEO tags in `src/index.html`
+- [x] T004 [P] Setup CSS variables (colores, tipografía, efectos modernos) en `src/styles/variables.css`
+- [x] T005 [P] Setup base CSS (reset, body defaults) en `src/styles/base.css`
+- [x] T006 Create main JS entry point en `src/js/main.js` e importarlo en `src/index.html`
+- [x] T007 Importar variables y base CSS en `src/index.html`
 
 **Checkpoint**: Foundation ready - user story implementation can now begin in parallel
 
@@ -43,12 +43,12 @@ description: "Task list for Sitio Web Institucional"
 
 ### Implementation for User Story 1
 
-- [ ] T008 [US1] Implementar header/navbar con el logo en `src/index.html`
-- [ ] T009 [US1] Implementar Hero section con la "Misión y Visión" (centrado en Dios) en `src/index.html`
-- [ ] T010 [US1] Implementar sección de "Acciones principales" en `src/index.html`
-- [ ] T011 [US1] Crear archivo `src/styles/components.css` y linkear en HTML
-- [ ] T012 [P] [US1] Estilizar Navbar y Hero section en `src/styles/components.css` (Glassmorphism effects)
-- [ ] T013 [P] [US1] Estilizar sección de Acciones (cards) en `src/styles/components.css`
+- [x] T008 [US1] Implementar header/navbar con el logo en `src/index.html`
+- [x] T009 [US1] Implementar Hero section con la "Misión y Visión" (centrado en Dios) en `src/index.html`
+- [x] T010 [US1] Implementar sección de "Acciones principales" en `src/index.html`
+- [x] T011 [US1] Crear archivo `src/styles/components.css` y linkear en HTML
+- [x] T012 [P] [US1] Estilizar Navbar y Hero section en `src/styles/components.css` (Glassmorphism effects)
+- [x] T013 [P] [US1] Estilizar sección de Acciones (cards) en `src/styles/components.css`
 
 **Checkpoint**: At this point, User Story 1 should be fully functional and testable independently
 
@@ -62,10 +62,10 @@ description: "Task list for Sitio Web Institucional"
 
 ### Implementation for User Story 2
 
-- [ ] T014 [US2] Implementar sección "Contacto" / Footer en `src/index.html`
-- [ ] T015 [US2] Implementar Botón Flotante de WhatsApp en `src/index.html` (wa.me)
-- [ ] T016 [US2] Agregar enlaces a Instagram en el Header/Footer de `src/index.html`
-- [ ] T017 [US2] Estilizar sección de contacto y botón flotante en `src/styles/components.css`
+- [x] T014 [US2] Implementar sección "Contacto" / Footer en `src/index.html`
+- [x] T015 [US2] Implementar Botón Flotante de WhatsApp en `src/index.html` (wa.me)
+- [x] T016 [US2] Agregar enlaces a Instagram en el Header/Footer de `src/index.html`
+- [x] T017 [US2] Estilizar sección de contacto y botón flotante en `src/styles/components.css`
 
 **Checkpoint**: At this point, User Stories 1 AND 2 should both work independently
 
@@ -79,9 +79,9 @@ description: "Task list for Sitio Web Institucional"
 
 ### Implementation for User Story 3
 
-- [ ] T018 [P] [US3] Recortar y procesar imágenes de los integrantes (aplicar recortes circulares u optimizaciones) en `src/assets/` usando CSS o procesador de imágenes.
-- [ ] T019 [US3] Implementar sección "Equipo / Nosotros" en `src/index.html` usando la lista de `docs/organizacional/INTEGRANTES`
-- [ ] T020 [US3] Estilizar tarjetas del equipo para que tengan un estilo cohesivo (sombras, efectos de hover) en `src/styles/components.css`
+- [x] T018 [P] [US3] Recortar y procesar imágenes de los integrantes (aplicar recortes circulares u optimizaciones) en `src/assets/` usando CSS o procesador de imágenes.
+- [x] T019 [US3] Implementar sección "Equipo / Nosotros" en `src/index.html` usando la lista de `docs/organizacional/INTEGRANTES`
+- [x] T020 [US3] Estilizar tarjetas del equipo para que tengan un estilo cohesivo (sombras, efectos de hover) en `src/styles/components.css`
 
 **Checkpoint**: All user stories should now be independently functional
 
@@ -91,9 +91,9 @@ description: "Task list for Sitio Web Institucional"
 
 **Purpose**: Improvements that affect multiple user stories
 
-- [ ] T021 [P] Implementar animaciones de scroll (Reveal on scroll) usando `src/js/main.js` y `src/styles/components.css`
-- [ ] T022 [P] Ajustar diseño responsivo (Media Queries) para garantizar visualización perfecta en móviles en `src/styles/components.css`
-- [ ] T023 Validar Lighthouse score y aplicar correcciones finales (comprimir imágenes si es necesario)
+- [x] T021 [P] Implementar animaciones de scroll (Reveal on scroll) usando `src/js/main.js` y `src/styles/components.css`
+- [x] T022 [P] Ajustar diseño responsivo (Media Queries) para garantizar visualización perfecta en móviles en `src/styles/components.css`
+- [ ] T023 Validar Lighthouse score y aplicar correcciones finales (comprimir imágenes si es necesario) — *imágenes y video ya optimizados (2026-11-25); falta correr Lighthouse*
 - [ ] T024 Testear todos los enlaces salientes (WhatsApp, RRSS)
 
 ---
@@ -131,3 +131,10 @@ description: "Task list for Sitio Web Institucional"
 3. Complete Phase 3: User Story 1
 4. **STOP and VALIDATE**: Test User Story 1 independently
 5. Deploy/demo if ready
+
+## Pendientes (2026-11-25)
+
+- [ ] T025 Cargar el número oficial de WhatsApp en `CONTACT.whatsapp` (`src/js/main.js`); mientras esté vacío los botones de WhatsApp quedan ocultos
+- [x] T026 Reemplazar el logo principal (ahora `src/assets/logos/logo.svg`, vectorizado), `favicon.png` y `og-image.jpg` por el logo nuevo — *hecho 2026-11-25 a partir de `logo-nuevo-original.png` (150px); conviene conseguir una versión en alta o SVG*
+- [x] T028 Tipografía de títulos cambiada a Comfortaa (acorde al logo nuevo); texto sigue en Outfit
+- [ ] T027 Cuando haya dominio: URLs absolutas en `og:image` y agregar `og:url` en `src/index.html`

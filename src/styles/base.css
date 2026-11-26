@@ -125,3 +125,37 @@ button {
 .delay-3 { transition-delay: 0.3s; }
 .delay-4 { transition-delay: 0.4s; }
 .delay-5 { transition-delay: 0.5s; }
+
+/* Accesibilidad */
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+.skip-link {
+  position: absolute; top: -100px; left: var(--space-4);
+  z-index: 2000;
+  background: var(--color-gold); color: var(--color-dark);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+  font-weight: var(--fw-semibold);
+}
+.skip-link:focus { top: var(--space-4); }
+:focus-visible {
+  outline: 2px solid var(--color-gold-light);
+  outline-offset: 3px;
+}
+
+/* Respetar "reducir movimiento" del sistema */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
+  }
+  .reveal, .reveal-left, .reveal-right { opacity: 1; transform: none; }
+}
+
+[hidden] { display: none !important; }

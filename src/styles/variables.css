@@ -2,7 +2,7 @@
    INVASIÓN DEL AMOR - CSS Variables
    =========================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+/* Las fuentes (Outfit para texto, Comfortaa para títulos — acorde al logo) se cargan con <link> en index.html */
 
 :root {
   /* Brand Colors */
@@ -38,7 +38,7 @@
 
   /* Typography */
   --font-primary:   'Outfit', sans-serif;
-  --font-display:   'Playfair Display', serif;
+  --font-display:   'Comfortaa', 'Outfit', sans-serif;
 
   --fs-xs:    0.75rem;
   --fs-sm:    0.875rem;
