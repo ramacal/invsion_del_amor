@@ -100,7 +100,8 @@
 
   /* ── Active nav link highlight on scroll ── */
   const sections = document.querySelectorAll('section[id]');
-  const navAnchors = document.querySelectorAll('.navbar__links a');
+  // Solo los links a secciones de esta misma página (los que van a otra página quedan como están)
+  const navAnchors = document.querySelectorAll('.navbar__links a[href^="#"]');
 
   const highlightNav = () => {
     let current = '';
