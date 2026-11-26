@@ -19,3 +19,7 @@ docs/
 
 # Windows
 desktop.ini
+
+# Fuentes para regenerar el logo
+tools/logo/fonts/
+node_modules/

@@ -62,7 +62,7 @@ src/
 │   └── main.js
 └── assets/
     ├── img/        (fotos del equipo en WebP, 400px)
-    ├── logos/      (logo.png = logo principal, favicon, og-image, QR)
+    ├── logos/      (logo.svg = logo principal (vectorizado), favicon, og-image, QR)
     └── videos/     (video del hero + poster.webp)
 ```
 

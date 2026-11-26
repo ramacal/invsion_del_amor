@@ -410,7 +410,7 @@
   display: flex; flex-direction: column; align-items: center;
   gap: var(--space-6); text-align: center;
 }
-.footer__logo img { height: 36px; filter: brightness(0) invert(1); opacity: 0.7; }
+.footer__logo img { height: 36px; width: auto; opacity: 0.7; }
 .footer__tagline { color: var(--text-muted); font-size: var(--fs-sm); }
 .footer__social { display: flex; gap: var(--space-4); }
 .footer__social a {

@@ -135,6 +135,6 @@ description: "Task list for Sitio Web Institucional"
 ## Pendientes (2026-11-25)
 
 - [ ] T025 Cargar el número oficial de WhatsApp en `CONTACT.whatsapp` (`src/js/main.js`); mientras esté vacío los botones de WhatsApp quedan ocultos
-- [x] T026 Reemplazar `src/assets/logos/logo.png` (blanco, fondo transparente), `favicon.png` y `og-image.jpg` por el logo nuevo — *hecho 2026-11-25 a partir de `logo-nuevo-original.png` (150px); conviene conseguir una versión en alta o SVG*
+- [x] T026 Reemplazar el logo principal (ahora `src/assets/logos/logo.svg`, vectorizado), `favicon.png` y `og-image.jpg` por el logo nuevo — *hecho 2026-11-25 a partir de `logo-nuevo-original.png` (150px); conviene conseguir una versión en alta o SVG*
 - [x] T028 Tipografía de títulos cambiada a Comfortaa (acorde al logo nuevo); texto sigue en Outfit
 - [ ] T027 Cuando haya dominio: URLs absolutas en `og:image` y agregar `og:url` en `src/index.html`
