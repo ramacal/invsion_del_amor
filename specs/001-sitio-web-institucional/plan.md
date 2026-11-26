@@ -53,7 +53,8 @@ specs/001-sitio-web-institucional/
 
 ```text
 src/
-├── index.html
+├── index.html      (home; en "Acciones" hay un adelanto del año que enlaza a 2026.html)
+├── 2026.html       (página "Nuestro 2026": timeline completo + historia de la ayuda a Venezuela con comprobantes)
 ├── styles/
 │   ├── variables.css
 │   ├── base.css
@@ -61,12 +62,14 @@ src/
 ├── js/
 │   └── main.js
 └── assets/
-    ├── img/        (fotos del equipo en WebP, 400px)
+    ├── img/        (fotos del equipo en WebP, 400px; acciones/ = fotos del timeline y comprobantes; cards/ = fotos de las tarjetas)
     ├── logos/      (logo.svg = logo principal (vectorizado), favicon, og-image, QR)
     └── videos/     (video del hero + poster.webp)
 ```
 
 **Structure Decision**: Se utilizará una estructura de aplicación web estática pura (Option 1 simplificada), separando estilos en componentes lógicos y usando un archivo JavaScript principal para las interacciones (animaciones, scroll, etc.).
+
+**Páginas por año**: como no hay generador de sitios, el menú (navbar) y el pie (footer) están copiados en `index.html` y `2026.html`. Si se cambian, hay que cambiarlos en ambos archivos (en `2026.html` los links apuntan a `index.html#seccion`). Para un año nuevo se copia `2026.html` como `2027.html` y se actualiza el adelanto de la home.
 
 ## Complexity Tracking
 
