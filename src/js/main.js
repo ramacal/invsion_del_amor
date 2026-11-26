@@ -45,6 +45,16 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
+  /* ── Logo del menú: oculto mientras se ve el logo grande del hero, aparece al bajar ── */
+  const heroLogo = document.querySelector('.hero__logo');
+  if (heroLogo && 'IntersectionObserver' in window) {
+    new IntersectionObserver(([entry]) => {
+      navbar.classList.toggle('show-logo', !entry.isIntersecting);
+    }, { rootMargin: '-80px 0px 0px 0px' }).observe(heroLogo);
+  } else {
+    navbar.classList.add('show-logo');
+  }
+
   /* ── Mobile hamburger menu ── */
   const hamburger = document.getElementById('hamburger');
   const navLinks = document.getElementById('nav-links');
@@ -106,6 +116,24 @@
     });
   };
   window.addEventListener('scroll', highlightNav, { passive: true });
+
+  /* ── Lightbox de las fotos/comprobantes de la historia de Venezuela ── */
+  const lightbox = document.getElementById('lightbox');
+  if (lightbox && typeof lightbox.showModal === 'function') {
+    const lbImg = lightbox.querySelector('.lightbox__img');
+    document.querySelectorAll('.story__zoom').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const thumb = link.querySelector('img');
+        lbImg.src = link.href;
+        lbImg.alt = thumb ? thumb.alt : '';
+        lightbox.showModal();
+      });
+    });
+    lightbox.querySelector('.lightbox__close').addEventListener('click', () => lightbox.close());
+    // Cerrar al hacer clic fuera de la imagen
+    lightbox.addEventListener('click', e => { if (e.target === lightbox) lightbox.close(); });
+  }
 
   /* ── Smooth WhatsApp float appearance ── */
   const waFloat = document.getElementById('wa-float');
