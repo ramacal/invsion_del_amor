@@ -89,28 +89,50 @@ function drawn(ch, x0, x1, y0, y1) {
     return `M${f2(L)} ${f2(B)}V${f2(cy)}A${f2(r)} ${f2(r)} 0 0 1 ${f2(R)} ${f2(cy)}V${f2(B)}`;
   }
   if (ch === 'v') {
-    const cx = (L + R) / 2;
-    return `M${f2(L)} ${f2(T)}L${f2(cx)} ${f2(B)}L${f2(R)} ${f2(T)}`;
+    // Round-capped arms starting slightly above the box (clipped flat at the top, see vClip),
+    // with a short flat segment at the bottom so the base is blunt and the notch deep
+    const vs = opts.vStem ?? STEM, hv = vs / 2;
+    const Lv = x0 + hv, Rv = x1 + 1 - hv, Bv = y1 + 1 - hv;
+    const Tv = y0 + hv - (opts.vExt ?? 0.5) * hv;
+    const cx = (Lv + Rv) / 2, w0 = opts.vFlat ?? 6;
+    return `M${f2(Lv)} ${f2(Tv)}L${f2(cx - w0 / 2)} ${f2(Bv)}L${f2(cx + w0 / 2)} ${f2(Bv)}L${f2(Rv)} ${f2(Tv)}`;
   }
   if (ch === 's') {
-    const mid = (T + B) / 2, r = (mid - T) / 2;
-    return `M${f2(R)} ${f2(T)}H${f2(L + r)}A${f2(r)} ${f2(r)} 0 0 0 ${f2(L + r)} ${f2(mid)}`
-      + `H${f2(R - r)}A${f2(r)} ${f2(r)} 0 0 1 ${f2(R - r)} ${f2(B)}H${f2(L)}`;
+    // Geometric S: two stacked ellipses; top arc from the upper-right terminal around the left,
+    // bottom arc from the middle around the right to the lower-left terminal
+    const sw = opts.sStem ?? STEM;
+    const Ls = x0 + sw / 2, Rs = x1 + 1 - sw / 2, Ts = y0 + sw / 2, Bs = y1 + 1 - sw / 2;
+    const rx = (Rs - Ls) / 2, ry = (Bs - Ts) / 4, cx = (Ls + Rs) / 2;
+    const c1 = Ts + ry, mid = Ts + 2 * ry, c2 = Bs - ry;
+    const a0 = (opts.sTerm ?? -35) * Math.PI / 180, a1 = Math.PI - a0;
+    const p0 = [cx + rx * Math.cos(a0), c1 + ry * Math.sin(a0)];
+    const p1 = [cx + rx * Math.cos(a1), c2 - ry * Math.sin(a0)];
+    return { d: `M${f2(p0[0])} ${f2(p0[1])}A${f2(rx)} ${f2(ry)} 0 1 0 ${f2(cx)} ${f2(mid)}`
+      + `A${f2(rx)} ${f2(ry)} 0 1 1 ${f2(p1[0])} ${f2(p1[1])}`, sw };
   }
 }
 const DRAWN = new Set(['n', 'v', 's']);
-const strokes = line1.filter(([ch]) => DRAWN.has(ch)).map(([ch, ...b]) => drawn(ch, ...b)).join('');
+const strokes = line1.filter(([ch]) => ch === 'n').map(([ch, ...b]) => drawn(ch, ...b)).join('');
+const vBox = line1.find(([ch]) => ch === 'v');
+const vPath = drawn('v', ...vBox.slice(1));
+const vClip = `<clipPath id="vclip"><rect x="${vBox[1] - 10}" y="${vBox[3]}" width="${vBox[2] - vBox[1] + 20}" height="${vBox[4] - vBox[3] + 1}"/></clipPath>`;
+const sObj = drawn('s', ...line1.find(([ch]) => ch === 's').slice(1));
 const l1 = line1.filter(([ch]) => ch !== 'o' && ch !== 'i' && !DRAWN.has(ch)).map(([ch, ...b]) => fit(bold, ch, ...b, SW1)).join('');
 const bars = line1.filter(([ch]) => ch === 'i').map(([, ...b]) => bar(...b)).join('');
 const oEl = heartO(...line1[6].slice(1));
-const l2 = line2.map(([ch, ...b]) => fit(font2, ch, ...b, SW2)).join('');
+// The "l" of the original is a straight bar (Comfortaa's has a hook)
+const l2 = line2.filter(([ch]) => ch !== 'l').map(([ch, ...b]) => fit(font2, ch, ...b, SW2)).join('');
+const bars2 = line2.filter(([ch]) => ch === 'l').map(([, x0, x1, y0, y1]) => bar(x0 - (opts.lGrow ?? 0.5), x1 + (opts.lGrow ?? 0.5), y0, y1)).join('');
 
 const minX = 64, minY = 245, w = 444, h = 122;
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${minX} ${minY} ${w} ${h}" width="${w * 2}" height="${h * 2}" fill="#FFFFFF">`
   + `<title>Invasión del Amor</title>`
   + `<path d="${l1}" stroke="#FFFFFF" stroke-width="${SW1.toFixed(2)}" stroke-linejoin="round"/>`
+  + `<defs>${vClip}</defs>`
   + `<path d="${strokes}" fill="none" stroke="#FFFFFF" stroke-width="${STEM}" stroke-linecap="round" stroke-linejoin="round"/>`
-  + bars + oEl
+  + `<path d="${vPath}" fill="none" stroke="#FFFFFF" stroke-width="${opts.vStem ?? STEM}" stroke-linejoin="round" stroke-linecap="round" clip-path="url(#vclip)"/>`
+  + `<path d="${sObj.d}" fill="none" stroke="#FFFFFF" stroke-width="${sObj.sw}" stroke-linecap="${opts.sCap ?? 'round'}"/>`
+  + bars + bars2 + oEl
   + `<path d="${l2}" stroke="#FFFFFF" stroke-width="${SW2.toFixed(2)}" stroke-linejoin="round"/>`
   + `</svg>`;
 fs.writeFileSync(OUT, svg);
